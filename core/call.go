@@ -75,8 +75,23 @@ func PerformCall(
 			}
 		}
 
-		if err = json.Unmarshal(resultBytes, &result); err != nil {
-			return err
+
+		if strings.HasSuffix(endpointURL, "differential.query") {
+			var resultToUse string
+
+			if strings.Contains(string(resultBytes), "\"reviewers\":[]") {
+				resultToUse = strings.Replace(string(resultBytes), "\"reviewers\":[]", "\"reviewers\":{}", -1)
+			} else {
+				resultToUse = string(resultBytes)
+			}
+
+			if err = json.Unmarshal([]byte(resultToUse), &result); err != nil {
+				return err
+			}
+		} else {
+			if err = json.Unmarshal(resultBytes, &result); err != nil {
+				return err
+			}
 		}
 	}
 
