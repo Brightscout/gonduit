@@ -1,6 +1,6 @@
 # gonduit [![GoDoc](https://godoc.org/github.com/etcinit/gonduit?status.svg)](https://godoc.org/github.com/etcinit/gonduit)
 
-A Go client for interacting with [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
+A Go client for interacting with  [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
 
 ## Getting started
 
