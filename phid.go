@@ -50,7 +50,7 @@ func (c *Conn) PHIDQuery(
 // PHIDQuerySingle calls the phid.query endpoint with a single phid.
 func (c *Conn) PHIDQuerySingle(phid string) (*entities.PHIDResult, error) {
 	resp, err := c.PHIDQuery(requests.PHIDQueryRequest{
-		PHIDs: []string{phid},
+		PHIDs: map[string]string{phid: phid},
 	})
 
 	if err != nil {

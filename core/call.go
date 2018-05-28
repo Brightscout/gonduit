@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/karlseguin/typed"
+	"bytes"
 )
 
 // GetEndpointURI formats a hostname and method name into an endpoint URI.
@@ -73,6 +74,10 @@ func PerformCall(
 			if len(arrResult) < 1 {
 				return nil
 			}
+		}
+
+		if strings.HasSuffix(endpointURL, "differential.query") {
+			resultBytes = bytes.Replace(resultBytes, []byte("\"reviewers\":[]"), []byte("\"reviewers\":{}"), -1)
 		}
 
 		if err = json.Unmarshal(resultBytes, &result); err != nil {
